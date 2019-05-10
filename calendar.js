@@ -33,4 +33,5 @@ function cal(year,month,day) {
  calendar+="<\/tr>\n<\/table>\n";
  return calendar;
 }
-// --></script>
+// -->
+</script>
