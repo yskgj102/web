@@ -1,4 +1,4 @@
-<script type="text/javascript"><!--
+<script type="text/javascript">
 function cal(year,month,day) {
  today=new Date();
  if (!year) var year=today.getFullYear();
@@ -33,5 +33,5 @@ function cal(year,month,day) {
  calendar+="<\/tr>\n<\/table>\n";
  return calendar;
 }
-// -->
+
 </script>
