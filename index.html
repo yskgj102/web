@@ -23,6 +23,7 @@ function cal(year,month,day) {
  for (i=1; i <= lom[month]; i++) {
   calendar+="<td";
    //比較する日付オブジェクトを２つ定義する
+
 var day1 = new Date(2019,5,4);
 var day2 = new Date(year,month+1,i);
 console.log(day2- day1);
@@ -36,6 +37,7 @@ var termDay = Math.floor((day2- day1) / 86400000);
   }
   }
   calendar+=">"+i+"<\/td>";
+
   j++;
   if (j > 6) {
    calendar+="<\/tr>\n<tr>";
