@@ -1,7 +1,7 @@
 <head>
 <script type="text/javascript">
 function cal(year,month,day) {
- today=new Date();
+today=new Date();
  if (!year) var year=today.getFullYear();
  if (!month) var month=today.getMonth();
  else month--;
@@ -24,14 +24,14 @@ function cal(year,month,day) {
   calendar+="<td";
    //比較する日付オブジェクトを２つ定義する
 
-var day1 = new Date(2019,5,4);
-var day2 = new Date(year,month+1,i);
-console.log(day2- day1);
+var day1 = new Date(2019,4,4);
+var day2 = new Date(year,month,i);
 //差日を求める（86,400,000ミリ秒＝１日）
-var termDay = Math.floor((day2- day1) / 86400000);
+var termDay = (Math.floor((day2- day1) / 86400000));
+if(termDay<0)termDay+=6;
   if (termDay%6==0||termDay%6==1||termDay%6==2) {
-  if(!(termDay%6==2&&day2.getDay()==3)){ 
-      if(!(termDay%6==2&&day2.getDay()==6)){
+  if(!(termDay%6==2&&day2.getDay()==0)){
+      if(!(termDay%6==2&&day2.getDay()==3)){
       calendar+=" class=\"today\"";
   }
   }
@@ -48,20 +48,31 @@ var termDay = Math.floor((day2- day1) / 86400000);
  calendar+="<\/tr>\n<\/table>\n";
  return calendar;
 }
+
 // --></script>
-<style type="text/css"><!--
+<style type="text/css">
 div.cal { float: left; margin: 4px; }
 div.cal * { text-align: center; font-size: 9pt; }
 div.cal table { border: solid 1px green; width: 140px; }
 div.cal caption { border: solid 1px green; border-bottom: none; background: aquamarine; }
 div.cal td.today { background: red; }
---></style>
+
+</style>
 
 </head>
 <body>
 <div class="cal">
 <script type="text/javascript">
-document.write(cal());
+document.write(cal(2019,5,1));
+document.write(cal(2019,6,1));
+document.write(cal(2019,7,1));
+document.write(cal(2019,8,1));
+document.write(cal(2019,9,1));
+document.write(cal(2019,10,1));
+document.write(cal(2019,11,1));
+document.write(cal(2019,12,1));
 </script>
 </div>
 </body>
+
+
