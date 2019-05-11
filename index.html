@@ -1,86 +1,60 @@
-<!DOCTYPE html>
-<html>
+<head>
+<script type="text/javascript">
+function cal(year,month,day) {
+ today=new Date();
+ if (!year) var year=today.getFullYear();
+ if (!month) var month=today.getMonth();
+ else month--;
+ if (!day) var day=today.getDate();
+ var leap_year=false;
+ if ((year%4 == 0 && year%100 != 0) || (year%400 == 0)) leap_year=true;
+ lom=new Array(31,28+leap_year,31,30,31,30,31,31,30,31,30,31);
+ dow=new Array("日","月","火","水","木","金","土");
+ var days=0;
+ for (var i=0; i < month; i++) days+=lom[i];
+ var week=Math.floor((year*365.2425+days)%7);
+ var j=0;
+ var when=year+"年 "+(month+1)+"月";
+ var calendar="<table summary=\""+when+"のカレンダー\">\n";
+ calendar+="<caption>"+when+"<\/caption>\n<tr>";
+ for (i=0; i < 7; i++) calendar+="<td>"+dow[i]+"<\/td>";
+ calendar+="<\/tr>\n<tr>";
+ for (i=0; i < week; i++,j++) calendar+="<td><\/td>";
+ for (i=1; i <= lom[month]; i++) {
+  calendar+="<td";
+   //比較する日付オブジェクトを２つ定義する
+var day1 = new Date('201９/0５/0４');
+var day2 = new Date('201９/0５/05');
+console.log(day2- day1);
+//差日を求める（86,400,000ミリ秒＝１日）
+var termDay = Math.floor((day2- day1) / 86400000)+1;
+var sasa=1
+  if (termDay%6!=0) calendar+=" class=\"today\"";
+  calendar+=">"+i+termDay+"<\/td>";
+  j++;
+  if (j > 6) {
+   calendar+="<\/tr>\n<tr>";
+   j=0;
+  }
+ }
+ for (i=j; i > 6; i++) calendar+="<td><\/td>";
+ calendar+="<\/tr>\n<\/table>\n";
+ return calendar;
+}
+// --></script>
+<style type="text/css"><!--
+div.cal { float: left; margin: 4px; }
+div.cal * { text-align: center; font-size: 9pt; }
+div.cal table { border: solid 1px green; width: 140px; }
+div.cal caption { border: solid 1px green; border-bottom: none; background: aquamarine; }
+div.cal td.today { background: red; }
+--></style>
 
-  
+</head>
 <body>
-  <header>
-    <div class="container">
-      <div class="header-left">
-        <img class="logo" src="https://prog-8.com/images/html/advanced/main_logo.png">
-      </div>
-      <span class="fa fa-bars menu-icon"></span>
-      <div class="header-right">
-        <a href="#">レッスン</a>
-        <a href="#">新規登録</a>
-        <a href="#" class="login">ログイン</a>
-      </div>
-    </div>
-  </header>
-  <div class="top-wrapper">
-    <div class="container">
-      <h1>LEARN TO CODE.<br>LEARN TO BE CREATIVE.</h1>
-      <p>Progateはオンラインプログラミング学習サービスです。<br>初心者にもやさしいスライドとレッスンで、ウェブサービスを作りながらプログラミングを学んでいきましょう。</p>
-      <div class="btn-wrapper">
-        <a href="#" class="btn signup">新規登録はこちら</a>
-        <p>or</p>
-        <a href="#" class="btn facebook"><span class="fa fa-facebook"></span>Facebookで登録</a>
-        <a href="#" class="btn twitter"><span class="fa fa-twitter"></span>Twitterで登録</a>
-      </div>
-    </div>
-  </div>
-  <div class="lesson-wrapper">
-    <div class="container">
-      <div class="heading">
-        <h2>Learn Where to Get Started!</h2>
-      </div>
-      <div class="lessons">
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/html.png">
-            <p>HTML & CSS</p>
-          </div>
-          <p class="text-contents">ウェブページの作成に使用される言語です。HTMLとCSSを組み合わせることで、静的なページを作り上げることができます。</p>
-        </div>
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/jQuery.png">
-            <p>jQuery</p>
-          </div>
-          <p class="text-contents">素敵な動きを手軽に実装できるJavaScriptライブラリです。 アニメーション効果をつけたり、Ajax（エイジャックス）を使って外部ファイルを読み込んだりと色々なことができます。</p>
-        </div>
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/ruby.png">
-            <p>Ruby</p>
-          </div>
-          <p class="text-contents">オープンソースの動的なプログラミング言語で、 シンプルさと高い生産性を備えています。大きなWebアプリケーションから小さな日用ツールまで、さまざまなソフトウェアを作ることができます。</p>
-        </div>
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/php.png">
-            <p>PHP</p>
-          </div>
-          <p class="text-contents">HTMLだけではページの内容を変えることはできません。PHPはHTMLにプログラムを埋め込み、それを可能にします。</p>
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <div class="message-wrapper">
-    <div class="container">
-      <div class="heading">
-        <h2>さぁ、あなたもProgateでプログラミングを学んでみませんか?</h2>
-        <h3>Let's learn to code, learn to be creative!</h3>
-      </div>
-      <span class="btn message">さっそく開発する</span>
-    </div>
-  </div>
-  <footer>
-    <div class="container">
-      <img src="https://prog-8.com/images/html/advanced/footer_logo.png">
-      <p>Learn to Code, Learn to be Creative.</p>
-    </div>
-  </footer>
-  <script type="text/javascript" src=“calendar.js"></script>
+<div class="cal">
+<script type="text/javascript">
+document.write(cal());
+</script>
+</div>
 </body>
-</html>
