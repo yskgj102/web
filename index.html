@@ -23,14 +23,19 @@ function cal(year,month,day) {
  for (i=1; i <= lom[month]; i++) {
   calendar+="<td";
    //比較する日付オブジェクトを２つ定義する
-var day1 = new Date('201９/0５/0４');
-var day2 = new Date('201９/0５/05');
+var day1 = new Date(2019,5,4);
+var day2 = new Date(year,month+1,i);
 console.log(day2- day1);
 //差日を求める（86,400,000ミリ秒＝１日）
-var termDay = Math.floor((day2- day1) / 86400000)+1;
-var sasa=1
-  if (termDay%6!=0) calendar+=" class=\"today\"";
-  calendar+=">"+i+termDay+2+"<\/td>";
+var termDay = Math.floor((day2- day1) / 86400000);
+  if (termDay%6==0||termDay%6==1||termDay%6==2) {
+  if(!(termDay%6==2&&day2.getDay()==3)){ 
+      if(!(termDay%6==2&&day2.getDay()==6)){
+      calendar+=" class=\"today\"";
+  }
+  }
+  }
+  calendar+=">"+i+"<\/td>";
   j++;
   if (j > 6) {
    calendar+="<\/tr>\n<tr>";
