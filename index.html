@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <p>選択した日 <span id="span1"></span>/<span id="span2"></span>/<span id="span３"></span></p>
 <form name="form1">
 	<select name="color1">
@@ -57,6 +58,7 @@
 </form>
 <input type="button" value="送信" onclick="clickBtn1()"/>
 <head>
+ <link rel="stylesheet" href="stylesheet.css">
 <script type="text/javascript">
      function clickBtn1(){
 	const color1 = document.form1.color1;
@@ -130,11 +132,10 @@ div.cal caption { border: solid 1px green; border-bottom: none; background: aqua
 div.cal td.today { background: red; }
 
 </style>
-
 </head>
 <body>
 <div class="cal">
-<script type="text/javascript">
+<script type="text/javascript" class="jscript">
 document.write(cal(2019,5,1));
 document.write(cal(2019,6,1));
 document.write(cal(2019,7,1));
@@ -143,7 +144,6 @@ document.write(cal(2019,9,1));
 document.write(cal(2019,10,1));
 document.write(cal(2019,11,1));
 document.write(cal(2019,12,1));
-
 
 </script>
 </div>
