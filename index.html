@@ -1,152 +1,126 @@
 <!DOCTYPE html>
-<p>選択した日 <span id="span1"></span>/<span id="span2"></span>/<span id="span３"></span></p>
+<p>
+	選択した日 <span id="span1"></span>/<span id="span2"></span>/<span
+		id="span３"></span>
+</p>
 <form name="form1">
 	<select name="color1">
-	    <option value="2019">2019</option>
-	    <option value="2020">2020</option>
-	    <option value="2021">2021</option>
+		<option value="2019">2019</option>
+		<option value="2020">2020</option>
+		<option value="2021">2021</option>
 
-	</select>
-    	<select name="month">
-	    <option value="1">1</option>
-	    <option value="2">2</option>
-	    <option value="3">3</option>
-         <option value="4">4</option>
-          <option value="5">5</option>
-           <option value="6">6</option>
-            <option value="7">7</option>
-             <option value="8">8</option>
-              <option value="9">9</option>
-               <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-	</select>
-    </select>
-    	<select name="day">
-	    <option value="1">1</option>
-	    <option value="2">2</option>
-	    <option value="3">3</option>
-         <option value="4">4</option>
-          <option value="5">5</option>
-           <option value="6">6</option>
-            <option value="7">7</option>
-             <option value="8">8</option>
-              <option value="9">9</option>
-               <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                	    <option value="13">13</option>
-	    <option value="14">14</option>
-	    <option value="15">15</option>
-         <option value="16">16</option>
-          <option value="17">17</option>
-           <option value="18">18</option>
-            <option value="19">19</option>
-             <option value="20">20</option>
-              <option value="21">21</option>
-               <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                           <option value="25">25</option>
-            <option value="26">26</option>
-             <option value="27">27</option>
-              <option value="28">28</option>
-               <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
+	</select> <select name="month">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	</select> </select> <select name="day">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+		<option value="13">13</option>
+		<option value="14">14</option>
+		<option value="15">15</option>
+		<option value="16">16</option>
+		<option value="17">17</option>
+		<option value="18">18</option>
+		<option value="19">19</option>
+		<option value="20">20</option>
+		<option value="21">21</option>
+		<option value="22">22</option>
+		<option value="23">23</option>
+		<option value="24">24</option>
+		<option value="25">25</option>
+		<option value="26">26</option>
+		<option value="27">27</option>
+		<option value="28">28</option>
+		<option value="29">29</option>
+		<option value="30">30</option>
+		<option value="31">31</option>
 	</select>
 </form>
-<input type="button" value="送信" onclick="clickBtn1()"/>
+<input type="button" value="送信" onclick="clickBtn1()" />
 <head>
- <link rel="stylesheet" href="stylesheet.css">
-<script type="text/javascript">
-     function clickBtn1(){
-	const color1 = document.form1.color1;
-    const month = document.form1.month;
-	// 値(数値)を取得
-	const num = color1.selectedIndex;
-    const num2 = month.selectedIndex;
-	//const num = document.form1.color1.selectedIndex;
-	// 値(数値)から値(value値)を取得
-	const str = color1.options[num].value;
-    const str2 = month.options[num2].value;
-	//const str = document.form1.color1.options[num].value;
-	document.getElementById("span1").textContent = str;
-    document.getElementById("span2").textContent = str2;
-}
-function cal(year,month,day) {
-today=new Date();
- if (!year) var year=today.getFullYear();
- if (!month) var month=today.getMonth();
- else month--;
- if (!day) var day=today.getDate();
- var leap_year=false;
- if ((year%4 == 0 && year%100 != 0) || (year%400 == 0)) leap_year=true;
- lom=new Array(31,28+leap_year,31,30,31,30,31,31,30,31,30,31);
- dow=new Array("日","月","火","水","木","金","土");
- var days=0;
- for (var i=0; i < month; i++) days+=lom[i];
- var week=Math.floor((year*365.2425+days)%7);
- var j=0;
- var when=year+"年 "+(month+1)+"月";
- var calendar="<table summary=\""+when+"のカレンダー\">\n";
- calendar+="<caption>"+when+"<\/caption>\n<tr>";
- for (i=0; i < 7; i++) calendar+="<td>"+dow[i]+"<\/td>";
- calendar+="<\/tr>\n<tr>";
- for (i=0; i < week; i++,j++) calendar+="<td><\/td>";
- for (i=1; i <= lom[month]; i++) {
-  calendar+="<td";
-   //比較する日付オブジェクトを２つ定義する
-
-var day1 = new Date(2019,4,4);
-var day2 = new Date(year,month,i);
-//差日を求める（86,400,000ミリ秒＝１日）
-var termDay = (Math.floor((day2- day1) / 86400000));
-if(termDay<0)termDay+=6;
-  if (termDay%6==0||termDay%6==1||termDay%6==2) {
-  if(!(termDay%6==2&&day2.getDay()==0)){
-      if(!(termDay%6==2&&day2.getDay()==3)){
-      calendar+=" class=\"today\"";
-  }
-  }
-  }
-  calendar+=">"+i+"<\/td>";
-
-  j++;
-  if (j > 6) {
-   calendar+="<\/tr>\n<tr>";
-   j=0;
-  }
- }
- for (i=j; i > 6; i++) calendar+="<td><\/td>";
- calendar+="<\/tr>\n<\/table>\n";
- return calendar;
-}
-
-// --></script>
+<link rel="stylesheet" href="stylesheet.css">
+<script src="calendar.js"></script>
 <style type="text/css">
-div.cal { float: left; margin: 4px; }
-div.cal * { text-align: center; font-size: 20pt; }
-div.cal table { border: solid 1px green; width: 500px; }
-div.cal caption { border: solid 1px green; border-bottom: none; background: aquamarine; }
-div.cal td.today { background: red; }
+div.cal {
+	margin: 4px;
+}
 
+div.cal * {
+	text-align: center;
+	font-size: 20pt;
+  
+}
+
+div.cal table {
+	border: solid 1px green;
+	width: 500px;
+}
+
+div.cal caption {
+	border: solid 1px green;
+	border-bottom: none;
+	background: aquamarine;
+}
+
+div.cal td.today {
+	background: red;
+}
 </style>
 </head>
 <body>
-<div class="cal">
-<script type="text/javascript" class="jscript">
-document.write(cal(2019,5,1));
-document.write(cal(2019,6,1));
-document.write(cal(2019,7,1));
-document.write(cal(2019,8,1));
-document.write(cal(2019,9,1));
-document.write(cal(2019,10,1));
-document.write(cal(2019,11,1));
-document.write(cal(2019,12,1));
+     <div class="main">
+	<div class="cal">
+		<ul>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 5, 1));
+			</script></li>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 6, 1));
+			</script></li>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 7, 1));
+			</script></li>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 8, 1));
+			</script></li>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 9, 1));
+			</script></li>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 10, 1));
+			</script></li>
+            <li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 11, 1));
+			</script></li>
+			<li><script type="text/javascript" class="jscript">
+				document.write(cal(2019, 12, 1));
+			</script></li>            
+			<li>お問い合わせ</li>
+            		<li>お問い合わせ</li>
+		</ul>
 
-</script>
-</div>
+	</div>
+    </div>
 </body>
 
 

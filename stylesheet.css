@@ -1,4 +1,7 @@
-.cal{
-
-   padding:0px 100px;
+.cal li{ 
+float:left;
+padding:0px 100px;
+}
+li {
+  list-style: none;
 }
