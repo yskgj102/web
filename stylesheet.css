@@ -1,7 +1,14 @@
-.cal li{ 
+.cal li{
 float:left;
 padding:0px 100px;
 }
 li {
   list-style: none;
+}
+#text-button {
+  display: block;
+  cursor: pointer;
+  width: 160px;
+  text-align: center;
+  border: 1px solid #232323;
 }
