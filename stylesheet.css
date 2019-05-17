@@ -1,14 +1,29 @@
-.cal li{
-float:left;
-padding:0px 100px;
+
+div.cal {
+  margin: 4px;
 }
-li {
-  list-style: none;
-}
-#text-button {
-  display: block;
-  cursor: pointer;
-  width: 160px;
+
+div.cal * {
   text-align: center;
-  border: 1px solid #232323;
+  font-size: 20pt;
+
+}
+
+div.cal table {
+  border: solid 1px rgb(61, 59, 181);
+  width: 500px;
+}
+
+div.cal caption {
+  border: solid 1px rgb(61, 59, 181);
+  border-bottom: none;
+  background: aquamarine;
+}
+
+div.cal td.today {
+  background: aquamarine;
+}
+
+div.cal td.holiday {
+  background: red;
 }

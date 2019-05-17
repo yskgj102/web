@@ -1,16 +1,19 @@
 function clickBtn1() {
-		const color1 = document.form1.color1;
+		const year = document.form1.year;
 		const month = document.form1.month;
+		const day = document.form1.day;
 		// 値(数値)を取得
-		const num = color1.selectedIndex;
+		const num = year.selectedIndex;
 		const num2 = month.selectedIndex;
-		//const num = document.form1.color1.selectedIndex;
+		const num3 = day.selectedIndex;
 		// 値(数値)から値(value値)を取得
-		const str = color1.options[num].value;
+		const str = year.options[num].value;
 		const str2 = month.options[num2].value;
-		//const str = document.form1.color1.options[num].value;
+		const str3 = day.options[num3].value;
 		document.getElementById("span1").textContent = str;
 		document.getElementById("span2").textContent = str2;
+		document.getElementById("span3").textContent = str3;
+
 	}
 	function cal(year, month, day) {
 		today = new Date();
@@ -45,18 +48,25 @@ function clickBtn1() {
 			calendar += "<td";
 			//比較する日付オブジェクトを２つ定義する
 
-			var day1 = new Date(2019, 4, 4);
+			var day1 = new Date(2019, (5-1), 4);
 			var day2 = new Date(year, month, i);
 			//差日を求める（86,400,000ミリ秒＝１日）
 			var termDay = (Math.floor((day2 - day1) / 86400000));
-			if (termDay < 0)
+			while (termDay < 0){
 				termDay += 6;
+			}
+
 			if (termDay % 6 == 0 || termDay % 6 == 1 || termDay % 6 == 2) {
 				if (!(termDay % 6 == 2 && day2.getDay() == 0)) {
 					if (!(termDay % 6 == 2 && day2.getDay() == 3)) {
-						calendar += " class=\"today\"";
+						calendar += " class=\"holiday\"";
 					}
 				}
+			}
+			var tday=new Date(today.getYear(), today.getMonth(), today.getDay());
+			console.log(tday);
+			if(day2.getTime()==tday.getTime()){
+				calendar += " class=\"today\"";
 			}
 			calendar += ">" + i + "<\/td>";
 

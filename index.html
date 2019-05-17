@@ -1,13 +1,14 @@
 <!DOCTYPE html <p>
-選択した日 <span id="span1"></span>/<span id="span2"></span>/<span id="span３"></span>
+
 </p>
 <form name="form1">
-	<select name="color1">
+	<select name="year">
 		<option value="2019">2019</option>
 		<option value="2020">2020</option>
 		<option value="2021">2021</option>
 
-	</select> <select name="month">
+	</select>
+	<select name="month">
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
@@ -20,7 +21,8 @@
 		<option value="10">10</option>
 		<option value="11">11</option>
 		<option value="12">12</option>
-	</select> </select> <select name="day">
+	</select>
+	<select name="day">
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
@@ -54,93 +56,52 @@
 		<option value="31">31</option>
 	</select>
 </form>
-<input type="button" value="送信" onclick="clickBtn1()" />
+
 
 <head>
 	<link rel="stylesheet" href="stylesheet.css">
 	<script src="calendar.js"></script>
-	<style type="text/css">
-		div.cal {
-			margin: 4px;
-		}
+	<script language="javascript" type="text/javascript" class="jscript">
+		function func() {
+			target = document.getElementById("output");
+			target2 = document.getElementById("output2");
+			target3 = document.getElementById("output3");
+			const year = document.form1.year;
+			const month = document.form1.month;
+			const day = document.form1.day;
+			// 値(数値)を取得
+			const num = year.selectedIndex;
+			const num2 = month.selectedIndex;
+			const num3 = day.selectedIndex;
+			// 値(数値)から値(value値)を取得
+			const str = year.options[num].value;
+			const str2 = month.options[num2].value;
+			const str3 = day.options[num3].value;
 
-		div.cal * {
-			text-align: center;
-			font-size: 20pt;
+			target.innerHTML = cal(Number(str), Number(str2), Number(str3));
+			target2.innerHTML = cal(Number(str), Number(str2) + 1, 1);
+			target3.innerHTML = cal(Number(str), Number(str2) + 2, 1);
 
 		}
-
-		div.cal table {
-			border: solid 1px green;
-			width: 500px;
-		}
-
-		div.cal caption {
-			border: solid 1px green;
-			border-bottom: none;
-			background: aquamarine;
-		}
-
-		div.cal td.today {
-			background: red;
-		}
-	</style>
+	</script>
 </head>
 
 <body>
-	<input type="button" value="Check" onclick="func()">
 
 	<div class="main">
 		<div class="cal">
+			<input type="button" value="送信" onclick="func()" />
 
-			<ul>
-				<li>
-					<script type="text/javascript" class="jscript">
-						var func = function() {
-							document.write(cal(2019, 6, 1));
-						}
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 6, 1));
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 7, 1));
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 8, 1));
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 9, 1));
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 10, 1));
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 11, 1));
-					</script>
-				</li>
-				<li>
-					<script type="text/javascript" class="jscript">
-						document.write(cal(2019, 12, 1));
-					</script>
-				</li>
-				<li>お問い合わせ</li>
-				<li>お問い合わせ</li>
-			</ul>
+			<div id="output"></div>
+			<div id="output2"></div>
+			<div id="output3"></div>
+			<script type="text/javascript" class="jscript">
+				//		document.write(cal(2019, 6, 1));
+			</script>
+
+
 
 		</div>
 	</div>
-	aaa
+
 </body>
